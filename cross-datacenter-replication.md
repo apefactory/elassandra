@@ -91,7 +91,7 @@ As soon these elasticsearch indices were created, cassandra secondary indices st
 <img alt="Visual VM of elassandra-eu-01" 
 src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/visualvm1.png" width="900">
 
-Obviously, in the same time, the injector write throughput has decreased. 
+Obviously, in the same time, the injector write throughput has decreased. At this moment, cassandra index inserted data and data existing in the lastfm.playlist table before we created elastisearch indices (compaction manager is building indices).
 
 <img alt="Injector cassandra driver metrics" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/cqlinject-when-indexing.png" width="900">
 
