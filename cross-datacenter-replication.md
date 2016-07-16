@@ -3,7 +3,7 @@
 To demonstrate the ability to provide elaticsearch cross datacenter replication with elassandra, we have build a 4 nodes elassandra cluster,
 2 nodes on a europe-west1 google datacenter, and 2 nodes on the us-central datacenter.
 
-<img alt="Google cloud console screenshot" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/gce-console1.png" width="350">
+<img alt="Google cloud console screenshot" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/gce-console1.png" width="600">
 
 Then we have created a lastfm keyspace, replicated with a replication factor of 2 in each datacenters.
 
@@ -88,11 +88,11 @@ done
 ```
 As soon these elasticsearch indices were created, cassandra secondary indices start to index existing and inserted data, involving a CPU overload to produce the underling lucene files. 
 
-<img alt="Visual VM of elassandra-eu-01" src="{{ site.url }}/assets/images/visualvm1.png" width="{{ image_width }}">
+<img alt="Visual VM of elassandra-eu-01" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/visualvm1.png" width="600">
 
 Obviously, in the same time, the injector write throughput has decreased. 
 
-<img alt="Injector cassandra driver metrics" src="{{ site.url }}/assets/images/cqlinject-when-indexing.png" width="{{ image_width }}">
+<img alt="Injector cassandra driver metrics" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/cqlinject-when-indexing.png" width="600">
 
 As we have created elasticsearch indices sevral minutes after the injector start to insert data, cassandra lauch a compaction the build secondary index on the existing data, while indexing the new one. This explains why write throughput significantly decreased when indices where created.
 
@@ -150,4 +150,3 @@ Status=Up/Down
 UN  10.128.0.2  3.86 GB    32           ?       289ca45a-1b5b-4847-a241-ffbc59c5b32e  b
 UN  10.128.0.3  3.86 GB    32           ?       ef03f183-2982-4a1d-b636-d57e811d5a90  c
 ```
-
