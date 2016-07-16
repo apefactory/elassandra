@@ -3,7 +3,7 @@
 To demonstrate the ability to provide elaticsearch cross datacenter replication with elassandra, we have build a 4 nodes elassandra cluster,
 2 nodes on a europe-west1 google datacenter, and 2 nodes on the us-central datacenter.
 
-<img alt="Google cloud console screenshot" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/gce-console1.png" width="600">
+<img alt="Google cloud console screenshot" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/gce-console1.png" width="900">
 
 Then we have created a lastfm keyspace, replicated with a replication factor of 2 in each datacenters.
 
@@ -89,11 +89,11 @@ done
 As soon these elasticsearch indices were created, cassandra secondary indices start to index existing and inserted data, involving a CPU overload to produce the underling lucene files. 
 
 <img alt="Visual VM of elassandra-eu-01" 
-src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/visualvm1.png" width="600">
+src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/visualvm1.png" width="900">
 
 Obviously, in the same time, the injector write throughput has decreased. 
 
-<img alt="Injector cassandra driver metrics" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/cqlinject-when-indexing.png" width="600">
+<img alt="Injector cassandra driver metrics" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/cqlinject-when-indexing.png" width="900">
 
 As we have created elasticsearch indices sevral minutes after the injector start to insert data, cassandra lauch a compaction the build secondary index on the existing data, while indexing the new one. This explains why write throughput significantly decreased when indices where created.
 
@@ -109,7 +109,7 @@ Active compaction remaining time :   0h00m00s
 While the injector was inserting at a rate of 4000 documents/s on the europe-west1 datacenter, we started a kibana server on elassandra-us-02 in the us-central1 datacenter. As shown, a dashboard on
 lastfm data provide 
 
-<img alt="Kibana report while injecting" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/kibana-report-while-injecting.png" width="800">
+<img alt="Kibana report while injecting" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/kibana-report-while-injecting.png" width="900">
 
 When the injector finished to inject almost 19M rows, CPU load load began to decrease on elassandra nodes, but remaing compactions were still consuming about 60% CPU.
 
@@ -123,15 +123,15 @@ pending tasks: 17
 Active compaction remaining time :   0h00m01s
 ```
 
-<img alt="VisualVM after the injector ends" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/visualvm4.png" width="800">
+<img alt="VisualVM after the injector ends" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/visualvm4.png" width="900">
 
 At the end, we had our 18.7M documents available on the remote datacenter, ready for visualization in kibana.
 
-<img alt="Kibana report at the end" src="{{ site.url }}/assets/images/kibana-end-report.png" width="{{ image_width }}">
+<img alt="Kibana report at the end" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/kibana-end-report.png" width="900">
 
 Looking at cluster state with the [elasticHQ](http://www.elastichq.org/) plugin, you can notice that the total number of document is twice the one available in kibana. This is because all elassandra nodes are primary, so replicated data are indexed twice in a primary shards. 
 
-<img alt="ElasticHQ erroneous total document" src="{{ site.url }}/assets/images/elastichq.png" width="{{ image_width }}">
+<img alt="ElasticHQ erroneous total document" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/elastichq.png" width="900">
 
 Finally, in each datacenter, we have 8Gb of cassandra data and 6Gb of elasticsearch index files located in /var/lib/cassandra/data/elasticsearch.data.
 
