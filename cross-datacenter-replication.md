@@ -88,7 +88,8 @@ done
 ```
 As soon these elasticsearch indices were created, cassandra secondary indices start to index existing and inserted data, involving a CPU overload to produce the underling lucene files. 
 
-<img alt="Visual VM of elassandra-eu-01" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/visualvm1.png" width="600">
+<img alt="Visual VM of elassandra-eu-01" 
+src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/visualvm1.png" width="600">
 
 Obviously, in the same time, the injector write throughput has decreased. 
 
@@ -108,7 +109,7 @@ Active compaction remaining time :   0h00m00s
 While the injector was inserting at a rate of 4000 documents/s on the europe-west1 datacenter, we started a kibana server on elassandra-us-02 in the us-central1 datacenter. As shown, a dashboard on
 lastfm data provide 
 
-<img alt="Kibana report while injecting" src="{{ site.url }}/assets/images/kibana-report-while-injecting.png" width="{{ image_width }}">
+<img alt="Kibana report while injecting" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/kibana-report-while-injecting.png" width="800">
 
 When the injector finished to inject almost 19M rows, CPU load load began to decrease on elassandra nodes, but remaing compactions were still consuming about 60% CPU.
 
@@ -122,7 +123,7 @@ pending tasks: 17
 Active compaction remaining time :   0h00m01s
 ```
 
-<img alt="VisualVM after the injector ends" src="{{ site.url }}/assets/images/visualvm4.png" width="{{ image_width }}">
+<img alt="VisualVM after the injector ends" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/visualvm4.png" width="800">
 
 At the end, we had our 18.7M documents available on the remote datacenter, ready for visualization in kibana.
 
