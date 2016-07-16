@@ -106,7 +106,7 @@ pending tasks: 10
 Active compaction remaining time :   0h00m00s
 ```
 
-While the injector was inserting at a rate of 4000 documents/s on the europe-west1 datacenter, we started a kibana server on elassandra-us-02 in the us-central1 datacenter. As shown, a dashboard on
+While the injector was inserting at a rate of 3500 documents/s on the europe-west1 datacenter, we started a kibana server on elassandra-us-02 in the us-central1 datacenter. As shown, a dashboard on
 lastfm data provide 
 
 <img alt="Kibana report while injecting" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/kibana-report-while-injecting.png" width="900">
@@ -133,7 +133,7 @@ Looking at cluster state with the [elasticHQ](http://www.elastichq.org/) plugin,
 
 <img alt="ElasticHQ erroneous total document" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/elastichq.png" width="900">
 
-Finally, in each datacenter, we have 8Gb of cassandra data and 6Gb of elasticsearch index files located in /var/lib/cassandra/data/elasticsearch.data.
+Finally, in each datacenter, we have 8Gb of cassandra data and 7Gb of elasticsearch index files located in /var/lib/cassandra/data/elasticsearch.data.
 
 ```
 Datacenter: europe-west1
