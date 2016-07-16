@@ -63,7 +63,7 @@ Pacha Ibiza)-09-28-2007, m, 45, Japan, Thu Feb 23 00:00:00 UTC 2006]
 
 ## Indexing with Elasticsearch
 
-After sevral minutes, we have created a set of per-year partitioned elasticsearch indices using the script below. All columns of the lastfl.playlist cassandra table were indexed with the default mapping, except the song column where we choose to anaylse the text content.
+After sevral minutes, we have created a set of per-year partitioned elasticsearch indices using the script below. All columns of the lastfl.playlist cassandra table were indexed with the default mapping, except the song column where we choose to anaylze the text content.
 
 ```
 function create_index() {
@@ -86,12 +86,12 @@ do
    create_index $y
 done
 ```
-As soon these elasticsearch indices were created, cassandra secondary indices start to index existing and inserted data, involving a CPU overload to produce the underling lucene files. 
+As soon these elasticsearch indices were created, cassandra secondary indices start to index existing and inserted data, involving a CPU overload to produce the underlying lucene files. 
 
 <img alt="Visual VM of elassandra-eu-01" 
 src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/visualvm1.png" width="900">
 
-Obviously, in the same time, the injector write throughput has decreased. At this moment, cassandra index inserted data and data existing in the lastfm.playlist table before we created elastisearch indices (compaction manager is building indices).
+Obviously, in the same time, the injector write throughput has decreased. At this moment, cassandra build indices for inserted data and existing ones in the lastfm.playlist table (compaction manager is building indices).
 
 <img alt="Injector cassandra driver metrics" src="https://github.com/strapdata/blog.elassandra.io/blob/gh-pages/assets/images/cqlinject-when-indexing.png" width="900">
 
